@@ -1,0 +1,12 @@
+{
+    "name": "@gnome-task/domain",
+    "version": "0.1.0-dev",
+    "private": true,
+    "type": "module",
+    "description": "Pure domain model for GNOME Task. No GNOME, no I/O, no globals.",
+    "license": "GPL-3.0-or-later",
+    "main": "./src/index.ts",
+    "exports": {
+        ".": "./src/index.ts"
+    }
+}
