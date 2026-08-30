@@ -1,0 +1,20 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        // Ambient declarations for gi://* and resource:///org/gnome/shell/*.
+        // `gjs/dom` supplies the web-ish globals GJS implements (console,
+        // TextEncoder, TextDecoder); `extensions/prefs/ambient` is separate
+        // because prefs.js runs in its own GTK process, not inside the shell.
+        "types": [
+            "@girs/gjs",
+            "@girs/gjs/dom",
+            "@girs/gnome-shell/ambient",
+            "@girs/gnome-shell/extensions/global",
+            "@girs/gnome-shell/extensions/prefs/ambient"
+        ],
+        "paths": {
+            "@gnome-task/domain": ["../packages/domain/src/index.ts"]
+        }
+    },
+    "include": ["src/**/*.ts"]
+}
