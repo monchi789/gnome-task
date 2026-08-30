@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-task">
+  <schema id="org.gnome.shell.extensions.gnome-task"
+          path="/org/gnome/shell/extensions/gnome-task/">
+
+    <key name="show-completed" type="b">
+      <default>true</default>
+      <summary>Show completed tasks</summary>
+      <description>
+        When enabled, completed tasks stay visible at the bottom of the list.
+        When disabled they are hidden from the popup but never deleted.
+      </description>
+    </key>
+
+    <key name="show-count-in-panel" type="b">
+      <default>true</default>
+      <summary>Show the pending count in the top bar</summary>
+      <description>
+        Display the number of pending tasks next to the panel icon.
+        When disabled, only the icon is shown.
+      </description>
+    </key>
+
+    <key name="max-visible-tasks" type="i">
+      <range min="5" max="100"/>
+      <default>25</default>
+      <summary>Maximum tasks shown before scrolling</summary>
+      <description>
+        How many task rows the popup shows before it starts scrolling.
+      </description>
+    </key>
+
+    <key name="storage-file" type="s">
+      <default>''</default>
+      <summary>Task database file</summary>
+      <description>
+        Absolute path of the JSON file tasks are stored in. Empty means the
+        default location under the XDG data directory. Changing this does not
+        move existing tasks: the extension simply starts reading and writing
+        at the new path.
+      </description>
+    </key>
+
+  </schema>
+</schemalist>

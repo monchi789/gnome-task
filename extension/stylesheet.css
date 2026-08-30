@@ -1,0 +1,215 @@
+/* GNOME Task — panel and popup styling.
+ *
+ * Colours are inherited from the shell theme wherever possible, so the
+ * extension follows light/dark and accent changes without extra work.
+ * Only spacing, emphasis, the completed-task treatment and the drag
+ * affordances are set here; the eight group colours are applied inline from
+ * `ui/colors.ts`, because the shell's CSS subset has neither variables nor
+ * `currentColor` to hang them on. */
+
+/* Force the symbolic lookup path so the icon is recoloured with the panel
+ * foreground instead of being drawn with the literal fill in the SVG. The
+ * shell's own theme does the same for .app-menu-icon. */
+.gnome-task-panel-icon {
+    -st-icon-style: symbolic;
+}
+
+.gnome-task-count {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.gnome-task-scroll {
+    /* max-height is set from JS, derived from the max-visible-tasks setting. */
+    min-width: 320px;
+}
+
+/* Rows are built with `activate: false`, which makes the shell mark them
+ * inactive and dim them. These rows are interactive through their own
+ * buttons, so the dimming is undone. */
+.gnome-task-item,
+.gnome-task-group-header,
+.gnome-task-new-row,
+.gnome-task-palette,
+.gnome-task-empty {
+    spacing: 8px;
+    color: inherit;
+}
+
+.gnome-task-item:insensitive,
+.gnome-task-group-header:insensitive,
+.gnome-task-new-row:insensitive,
+.gnome-task-palette:insensitive {
+    color: inherit;
+}
+
+.gnome-task-title-button {
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.gnome-task-title-button:hover {
+    background-color: rgba(127, 127, 127, 0.15);
+}
+
+.gnome-task-title-done {
+    /* No text-decoration in the shell's CSS subset, so completion is shown
+     * by fading the row instead of striking it through. */
+    opacity: 0.5;
+}
+
+.gnome-task-check,
+.gnome-task-delete,
+.gnome-task-fold,
+.gnome-task-group-add {
+    padding: 2px;
+    border-radius: 99px;
+}
+
+.gnome-task-check:hover,
+.gnome-task-delete:hover,
+.gnome-task-fold:hover,
+.gnome-task-group-add:hover {
+    background-color: rgba(127, 127, 127, 0.2);
+}
+
+.gnome-task-delete,
+.gnome-task-group-add {
+    opacity: 0.55;
+}
+
+.gnome-task-delete:hover,
+.gnome-task-group-add:hover {
+    opacity: 1;
+}
+
+.gnome-task-entry {
+    min-width: 200px;
+}
+
+.gnome-task-new-group {
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.gnome-task-new-group:hover,
+.gnome-task-new-group:focus {
+    background-color: rgba(127, 127, 127, 0.15);
+}
+
+.gnome-task-new-group-box {
+    spacing: 8px;
+}
+
+.gnome-task-empty-label {
+    opacity: 0.6;
+    padding: 6px 2px;
+}
+
+/* --- groups ------------------------------------------------------------- */
+
+.gnome-task-group-header {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-weight: bold;
+}
+
+.gnome-task-group-title {
+    font-weight: bold;
+}
+
+.gnome-task-group-count {
+    opacity: 0.55;
+    padding: 0 4px;
+}
+
+/* The colour of a group is a dot on its header and a stripe down the left
+ * edge of its tasks, so a row keeps saying where it belongs while it is being
+ * dragged out of the group. */
+.gnome-task-group-dot {
+    padding: 4px;
+    border-radius: 99px;
+}
+
+.gnome-task-group-dot:hover {
+    background-color: rgba(127, 127, 127, 0.2);
+}
+
+.gnome-task-group-dot-fill {
+    /* background-color is set inline from the group's colour; see ui/colors.ts. */
+    width: 12px;
+    height: 12px;
+    border-radius: 99px;
+}
+
+.gnome-task-grouped {
+    /* border-left is set inline from the group's colour; see ui/colors.ts. */
+    padding-left: 5px;
+}
+
+.gnome-task-group-compose {
+    padding-left: 24px;
+}
+
+/* --- colour palette ----------------------------------------------------- */
+
+.gnome-task-palette {
+    padding-left: 32px;
+    spacing: 6px;
+}
+
+.gnome-task-swatch {
+    padding: 3px;
+    border-radius: 99px;
+    border: 2px solid transparent;
+}
+
+.gnome-task-swatch:hover,
+.gnome-task-swatch:focus {
+    border: 2px solid rgba(127, 127, 127, 0.5);
+}
+
+/* The current colour, marked with a ring that works on either theme. */
+.gnome-task-swatch-active {
+    border: 2px solid rgba(127, 127, 127, 1);
+}
+
+.gnome-task-swatch-fill {
+    /* background-color is set inline; see ui/colors.ts. */
+    width: 16px;
+    height: 16px;
+    border-radius: 99px;
+}
+
+/* --- dragging ----------------------------------------------------------- */
+
+.gnome-task-grip {
+    opacity: 0;
+    padding: 0 2px;
+}
+
+.gnome-task-item:hover .gnome-task-grip,
+.gnome-task-group-header:hover .gnome-task-grip,
+.gnome-task-grip:hover {
+    opacity: 0.6;
+}
+
+.gnome-task-dragging {
+    opacity: 0.4;
+}
+
+/* Where the drop would land. A border rather than a floating actor: nothing
+ * is reparented during a drag, so nothing can be left behind by one. */
+.gnome-task-drop-above {
+    border-top: 2px solid #3584e4;
+}
+
+.gnome-task-drop-below {
+    border-bottom: 2px solid #3584e4;
+}
+
+.gnome-task-drop-into {
+    background-color: rgba(53, 132, 228, 0.25);
+    border-radius: 6px;
+}

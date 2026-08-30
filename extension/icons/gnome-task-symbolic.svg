@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!--
+    Symbolic icon. GNOME wraps this file and injects
+    `rect,path,ellipse,circle,polygon {fill: <panel colour> !important}`, so the
+    literal fills below only show if that recolouring ever fails.
+
+    Two rules, both learned the hard way:
+
+     1. `<svg>` must come right after the XML declaration. gdk-pixbuf sniffs
+        only the first bytes of the file, and a comment placed *before* the root
+        element pushed it out of that window — the loader then rejected the file
+        outright with "Unrecognized image file format" and the panel got no icon
+        at all. Keep prose inside the root element, like this.
+     2. Keep the 16x16 viewBox and align edges to the pixel grid, or it looks
+        blurry in the top bar.
+  -->
+  <!-- checkmark for the completed row -->
+  <path fill="#2e3436" d="M 1 8.5 L 2.4 7.1 L 4 8.7 L 7.6 5.1 L 9 6.5 L 4 11.5 Z"/>
+  <!-- three task lines -->
+  <rect fill="#2e3436" x="10.5" y="3" width="4.5" height="1.6" rx="0.8"/>
+  <rect fill="#2e3436" x="10.5" y="7.2" width="4.5" height="1.6" rx="0.8"/>
+  <rect fill="#2e3436" x="6.5" y="11.4" width="8.5" height="1.6" rx="0.8"/>
+</svg>

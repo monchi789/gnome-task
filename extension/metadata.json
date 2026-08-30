@@ -1,0 +1,9 @@
+{
+    "uuid": "gnome-task@monchi789.github.com",
+    "name": "GNOME Task",
+    "description": "Local-first task management from the GNOME top bar. Create, complete and edit tasks without leaving the panel, and sort them into coloured groups you can fold away and reorder by dragging. Everything is stored on your machine as plain JSON; no account, no server, no network access.",
+    "shell-version": ["48"],
+    "url": "https://github.com/monchi789/gnome-task",
+    "settings-schema": "org.gnome.shell.extensions.gnome-task",
+    "version-name": "0.1.0"
+}

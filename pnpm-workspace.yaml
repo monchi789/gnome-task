@@ -1,0 +1,28 @@
+packages:
+    - 'extension'
+    - 'packages/*'
+
+# esbuild ships a platform-specific binary via a postinstall script.
+allowBuilds:
+    esbuild: true
+
+minimumReleaseAgeExclude:
+    - '@girs/harfbuzz-0.0@4.2.0'
+    - '@girs/pango-1.0@4.2.0'
+    - '@girs/pangocairo-1.0@4.2.0'
+
+# The @girs packages pin *exact* versions of the core GLib stack, and they
+# disagree: @girs/st-16 wants the rc.17 line while @girs/gtk-4.0 and
+# @girs/adw-1 want beta.36/beta.37. Left alone, pnpm installs six copies of
+# @girs/gio-2.0 and TypeScript treats them as unrelated types, so a Gio.Icon
+# from one copy cannot be assigned to a St.Icon expecting another.
+#
+# St and Clutter are what the shell-side code is written against, so the whole
+# tree is pinned to their line. Gtk/Adw only appear in prefs.ts, which runs in
+# a separate process and touches Gio solely through GSettings.
+overrides:
+    '@girs/gio-2.0': 2.88.0-4.0.0-rc.17
+    '@girs/glib-2.0': 2.88.0-4.0.0-rc.17
+    '@girs/gobject-2.0': 2.88.0-4.0.0-rc.17
+    '@girs/gmodule-2.0': 2.0.0-4.0.0-rc.17
+    '@girs/gjs': 4.0.0-rc.17
