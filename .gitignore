@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+extension/schemas/gschemas.compiled
+*.zip
+.DS_Store

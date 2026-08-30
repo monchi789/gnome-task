@@ -1,0 +1,37 @@
+{
+    "name": "gnome-task",
+    "version": "0.1.0-dev",
+    "private": true,
+    "type": "module",
+    "description": "GNOME Shell extension for local-first task management",
+    "license": "GPL-3.0-or-later",
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "build": "node scripts/build.mjs",
+        "watch": "node scripts/build.mjs --watch",
+        "install:ext": "node scripts/install.mjs",
+        "uninstall:ext": "node scripts/uninstall.mjs",
+        "pack:ego": "pnpm build && node scripts/pack.mjs",
+        "typecheck": "tsc --noEmit -p extension/tsconfig.json && tsc --noEmit -p packages/domain/tsconfig.json",
+        "test": "node --test 'packages/domain/test/*.test.ts'",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "check": "pnpm typecheck && pnpm lint && pnpm test",
+        "test:watch": "node --test --watch 'packages/domain/test/*.test.ts'"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@girs/gjs": "4.0.0-rc.17",
+        "@girs/gnome-shell": "48.0.4",
+        "@types/node": "^24.3.0",
+        "esbuild": "^0.28.2",
+        "eslint": "^9.34.0",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.6.2",
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.41.0"
+    }
+}
